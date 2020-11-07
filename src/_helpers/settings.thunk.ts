@@ -1,19 +1,60 @@
 import { ThunkDispatch } from 'redux-thunk'
 import { Action } from 'redux'
 import { alertFailure } from '../_actions/alert.actions';
-import { loadUsers } from './user.thunk';
-import { clearUsers } from '../_actions/users.actions';
-import { updateLocation } from '../_actions/settings.actions';
+import { updateCurrency, currenciesLoadedSuccessfully } from '../_actions/settings.actions';
+import { clearProducts } from '../_actions/products.actions';
+import { loadProducts } from './product.thunk';
+import { Currency } from '../_constants/settings.interface';
 
 type MyRootState = {};
 type MyExtraArg = undefined;
 type MyThunkDispatch = ThunkDispatch<MyRootState, MyExtraArg, Action>;
 
-export const updateNationality = (nationality = "") => async (dispatch: MyThunkDispatch) => {
+const defaultCurrency = {
+    name: 'US Dollar',
+    symbol: '$',
+    symbolNative: '$',
+    decimalDigits: 2,
+    rounding: 0,
+    code: 'USD',
+    namePlural: 'US dollars',
+    countries: [
+        'AS',
+        'BQ',
+        'EC',
+        'FM',
+        'GU',
+        'IO',
+        'MH',
+        'MP',
+        'PR',
+        'PW',
+        'SV',
+        'TC',
+        'TL',
+        'UM',
+        'US',
+        'VG',
+        'VI',
+    ],
+} as Currency
+
+export const updateCurrentCurrency = (currency = defaultCurrency) => async (dispatch: MyThunkDispatch) => {
     try {
-        dispatch(updateLocation(nationality))
-        dispatch(clearUsers())
-        dispatch(loadUsers(50, nationality))
+        dispatch(updateCurrency(currency))
+        dispatch(clearProducts())
+        dispatch(loadProducts(currency))
+    } catch(e) {
+        dispatch(alertFailure(e.toString()))
+    }
+}
+
+export const loadCurrencies = () => async (dispatch: MyThunkDispatch) => {
+    try {
+        let response = await fetch(`http://localhost:3001/currencies`)
+        const result = await response.json()
+
+        dispatch(currenciesLoadedSuccessfully(result))
     } catch(e) {
         dispatch(alertFailure(e.toString()))
     }

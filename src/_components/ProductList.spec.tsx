@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import { LocationEnum, LocationSettings } from '../_constants/settings.interface';
 import ProductList from './ProductList'
-import { UserInfo } from '../_constants/users.interface';
+import { UserInfo } from '../_constants/product.interface';
 
 
 describe('ProductList Component', () => {

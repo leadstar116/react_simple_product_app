@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import { UserInfo } from '../_constants/users.interface';
+import { UserInfo } from '../_constants/product.interface';
 import DetailsModal from './DetailsModal'
 
 

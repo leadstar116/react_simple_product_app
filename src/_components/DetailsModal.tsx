@@ -1,14 +1,18 @@
 import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
-import { UserInfo } from '../_constants/users.interface';
+import { useSelector } from 'react-redux';
+import { IProduct } from '../_constants/product.interface';
+import { initialState } from '../_constants/state.interface';
 
 type Props = {
     show: boolean,
     onHide: () => void,
-    user: UserInfo
+    product: IProduct
 }
 
 const DetailsModal = (props: Props) => {
+    const settings = useSelector((state:initialState) => state.settingsReducer)
+
     return (
         <Modal
             {...props}
@@ -18,34 +22,64 @@ const DetailsModal = (props: Props) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Details for {props.user.name.username}
+                    Details for { props.product.name }
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <p>
-                    <b>Street: </b>
-                    {props.user.location.street.name + " " + props.user.location.street.number}
+                    <b>ID: </b>
+                    { props.product.id }
                 </p>
                 <p>
-                    <b>City: </b>
-                    {props.user.location.city}
+                    <b>Name: </b>
+                    { props.product.name }
                 </p>
                 <p>
-                    <b>State: </b>
-                    {props.user.location.state}
+                    <b>Price({ settings.currentCurrency.name }): </b>
+                    { settings.currentCurrency.symbol + " " + props.product.price }
                 </p>
                 <p>
-                    <b>Postcode: </b>
-                    {props.user.location.postcode}
+                    <b>Price(USD): </b>
+                    { props.product.priceUSD }
                 </p>
-                <p>
-                    <b>Phone: </b>
-                    {props.user.phone}
-                </p>
-                <p>
-                    <b>Cell: </b>
-                    {props.user.cell}
-                </p>
+                <b>Images: </b>
+                <div id="imageShow" className="carousel slide" data-ride="carousel">
+                    <ol className="carousel-indicators">
+                        {
+                            props.product.photos.map((photo, index) => (
+                                <li
+                                    data-target="#imageShow"
+                                    data-slide-to={index}
+                                    className={index == 0? "active":''}
+                                    key={index}
+                                >
+                                </li>
+                            ))
+                        }
+                    </ol>
+                    <div className="carousel-inner">
+                        {
+                            props.product.photos.map((photo, index) => (
+                                <div className={index == 0? "carousel-item active" : "carousel-item"} key={index}>
+                                    <img className="d-block w-100" src={photo} key={index} />
+                                </div>
+                            ))
+                        }
+
+                        <a className="carousel-control-prev" href="#imageShow" role="button" data-slide="prev">
+                            <div className="bg-dark carousel-button">
+                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span className="sr-only">Previous</span>
+                            </div>
+                        </a>
+                        <a className="carousel-control-next" href="#imageShow" role="button" data-slide="next">
+                            <div className="bg-dark carousel-button">
+                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span className="sr-only">Next</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>Close</Button>

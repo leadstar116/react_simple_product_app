@@ -1,23 +1,51 @@
-import { LOCATION_UPDATED } from '../_actions/settings.actions'
-import { LocationEnum, LocationSettings } from '../_constants/settings.interface';
+import { CURRENCIES_LOADED_SUCCESSFULLY, CURRENCY_UPDATED } from '../_actions/settings.actions'
+import { Currency } from '../_constants/settings.interface';
 
 const settingsState = {
-    location: {
-        nationality: LocationEnum.Any
-    } as LocationSettings
+    currentCurrency: {
+        name: 'US Dollar',
+        symbol: '$',
+        symbolNative: '$',
+        decimalDigits: 2,
+        rounding: 0,
+        code: 'USD',
+        namePlural: 'US dollars',
+        countries: [
+            'AS',
+            'BQ',
+            'EC',
+            'FM',
+            'GU',
+            'IO',
+            'MH',
+            'MP',
+            'PR',
+            'PW',
+            'SV',
+            'TC',
+            'TL',
+            'UM',
+            'US',
+            'VG',
+            'VI',
+        ],
+    } as Currency,
+    currencies: [] as Currency[]
 }
 
 const settingsReducer = (state = settingsState, action: any) => {
     const { type, payload } = action
 
     switch (type) {
-        case LOCATION_UPDATED:
+        case CURRENCIES_LOADED_SUCCESSFULLY:
             return {
                 ...state,
-                location: {
-                    ...state.location,
-                    nationality: payload
-                }
+                currencies: payload.currencies,
+            }
+        case CURRENCY_UPDATED:
+            return {
+                ...state,
+                currentCurrency: payload,
             }
         default:
             break;

@@ -1,6 +1,6 @@
-import { UserInfo } from "../_constants/users.interface"
-import usersReducer from './users.reducer'
-import * as usersActions from '../_actions/users.actions'
+import { UserInfo } from "../_constants/product.interface"
+import usersReducer from './products.reducer'
+import * as usersActions from '../_actions/products.actions'
 
 describe('users reducer test', () => {
     let initialState = {

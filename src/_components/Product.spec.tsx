@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import { UserInfo } from '../_constants/users.interface';
-import Product from './Product'
+import { UserInfo } from '../_constants/product.interface';
+import IProduct from './Product'
 
 
 describe('Product Component', () => {

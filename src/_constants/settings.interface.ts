@@ -1,15 +1,15 @@
+export interface Currency {
+  name: string,
+  symbol: string,
+  symbolNative: string,
+  decimalDigits: number,
+  rounding: number,
+  code: string,
+  namePlural: string,
+  countries: string[]
+}
+
 export interface SettingsState {
-    location: LocationSettings
-}
-
-export interface LocationSettings {
-    nationality: LocationEnum
-}
-
-export enum LocationEnum {
-    Any = "",
-    CH = "CH",
-    ES = "ES",
-    FR = "FR",
-    GB = "GB",
+  currentCurrency: Currency,
+  currencies: Currency[]
 }
