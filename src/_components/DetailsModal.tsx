@@ -40,7 +40,7 @@ const DetailsModal = (props: Props) => {
                 </p>
                 <p>
                     <b>Price(USD): </b>
-                    { props.product.priceUSD }
+                    { '$ ' + props.product.priceUSD }
                 </p>
                 <b>Images: </b>
                 <div id="imageShow" className="carousel slide" data-ride="carousel">
