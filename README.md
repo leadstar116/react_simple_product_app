@@ -11,6 +11,10 @@ This is just a simple product app, where customers can see all products with the
 - Used https://fixer.io to convert the currencies (Free plan).
 - Used https://ipapi.co/json to get the location of the user based on IP.
 
+### Screenshot:
+<img src="https://content.screencast.com/users/SupremeDev/folders/Default/media/cdef70bb-cb07-43f4-837f-db1f861891e8/screenshot.png" />
+<img src="https://content.screencast.com/users/SupremeDev/folders/Default/media/ed2b4888-42f5-4797-bab6-2563e61fed38/screenshot.png" />
+
 ## Used Stacks:
 - React
 - Redux
