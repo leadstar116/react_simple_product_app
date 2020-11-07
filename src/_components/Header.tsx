@@ -11,7 +11,7 @@ type Props = {
 const Header = (props: Props) => {
     return (
         <Navbar bg="light" expand="lg" fixed="top">
-            <Navbar.Brand href="#home">Address Book</Navbar.Brand>
+            <Navbar.Brand href="#home">Simple Product App</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
@@ -22,7 +22,7 @@ const Header = (props: Props) => {
                 <InputGroup className="mr-sm-2 search-input" >
                     <InputGroup.Prepend>
                         <InputGroup.Text className={props.searchString && "border border-danger"}>
-                            First and last name
+                            Product
                         </InputGroup.Text>
                     </InputGroup.Prepend>
                     <FormControl

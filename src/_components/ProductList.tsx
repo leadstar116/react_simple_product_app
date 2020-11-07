@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadUsers, updateUsers } from '../_helpers/user.thunk'
 import { alertSuccess } from '../_actions/alert.actions'
-import User from './User'
+import Product from './Product'
 import { initialState } from '../_constants/state.interface'
 
 type Props = {
     searchString: string,
 }
 
-const UserList = ({ searchString }: Props) => {
+const ProductList = ({ searchString }: Props) => {
     const dispatch = useDispatch()
-    const userList = useSelector((state:initialState) => state.usersReducer)
+    const ProductList = useSelector((state:initialState) => state.usersReducer)
     const alertState = useSelector((state:initialState) => state.alertReducer)
     const settings = useSelector((state:initialState) => state.settingsReducer)
 
@@ -23,32 +23,32 @@ const UserList = ({ searchString }: Props) => {
 
     // Preload users
     useEffect(() => {
-        if(userList.isPreloaded)
+        if(ProductList.isPreloaded)
             return
         dispatch(loadUsers(usersCount, settings.location.nationality))
-    }, [dispatch, userList, settings, usersCount])
+    }, [dispatch, ProductList, settings, usersCount])
 
     // Initialize users at first load
     useEffect(() => {
-        if(!userList.isPreloaded
+        if(!ProductList.isPreloaded
             || isInitialized
-            || userList.users.length)
+            || ProductList.users.length)
             return
         dispatch(updateUsers())
         setIsInitialized(true)
-    }, [userList, dispatch, isInitialized, usersCount])
+    }, [ProductList, dispatch, isInitialized, usersCount])
 
     // Add preloaded users to users list when scrolling
     useEffect(() => {
         if(!isFetching || searchString)
             return
-        if(userList.users.length >= maxUsersCount) {
+        if(ProductList.users.length >= maxUsersCount) {
             dispatch(alertSuccess('End of users catalog'))
             return
         }
         dispatch(updateUsers())
         setIsFetching(false)
-    }, [userList, dispatch, isFetching, searchString])
+    }, [ProductList, dispatch, isFetching, searchString])
 
     // Handle scroll
     function handleScroll() {
@@ -64,7 +64,7 @@ const UserList = ({ searchString }: Props) => {
     }, [])
 
     const filtereUsersWithSearchKey = () => {
-        return userList.users.filter((user) => {
+        return ProductList.users.filter((user) => {
             const name = user.name.first + user.name.last as string
             return name.split(' ').join('').toLowerCase().includes(
                 searchString.split(' ').join('').toLowerCase()
@@ -78,7 +78,7 @@ const UserList = ({ searchString }: Props) => {
         <div className="p-2">
             {
                 filteredUsers.map((user, index) => (
-                    <User data={user} key={index}/>
+                    <Product data={user} key={index}/>
                 ))
             }
             {alertState !== undefined &&
@@ -86,7 +86,7 @@ const UserList = ({ searchString }: Props) => {
                     {alertState.alertMessage}
                 </div>
             }
-            {(!filteredUsers.length && userList.users.length)
+            {(!filteredUsers.length && ProductList.users.length)
                 ? (<div className="alert alert-danger text-center">
                     Sorry, we couldn't find a user with that name
                     </div>)
@@ -96,4 +96,4 @@ const UserList = ({ searchString }: Props) => {
     )
 }
 
-export default UserList
+export default ProductList

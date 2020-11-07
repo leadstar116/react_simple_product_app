@@ -7,7 +7,7 @@ type Props = {
     data: UserInfo
 }
 
-const User = (props: Props) => {
+const Product = (props: Props) => {
     const [showDetail, setShowDetail] = useState(false);
 
     const handleClick = () => {
@@ -31,4 +31,4 @@ const User = (props: Props) => {
     )
 }
 
-export default User
+export default Product

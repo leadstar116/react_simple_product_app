@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Header from '../_components/Header'
-import UserList from '../_components/UserList'
+import ProductList from '../_components/ProductList'
 
 function HomePage() {
     const [searchString, setSearchString] = useState("")
@@ -12,7 +12,7 @@ function HomePage() {
                 searchString = {searchString}
                 setSearchString = {setSearchString}
             />
-            <UserList
+            <ProductList
                 searchString = {searchString}
             />
         </div>

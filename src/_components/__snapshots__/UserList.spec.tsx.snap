@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserList Component should render with given props 1`] = `
+exports[`ProductList Component should render with given props 1`] = `
 <div
   className="p-2"
 >
@@ -45,6 +45,6 @@ exports[`UserList Component should render with given props 1`] = `
       </span>
     </div>
   </div>
-  
+
 </div>
 `;

@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import { UserInfo } from '../_constants/users.interface';
-import User from './User'
+import Product from './Product'
 
 
-describe('User Component', () => {
+describe('Product Component', () => {
     const testUserInfo = {
         email: 'test@test.com',
         name: {
@@ -55,7 +55,7 @@ describe('User Component', () => {
 
     let component = renderer.create(
         <BrowserRouter>
-            <User data={testUserInfo}/>
+            <Product data={testUserInfo}/>
         </BrowserRouter>
     );
 
