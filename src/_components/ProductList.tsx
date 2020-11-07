@@ -16,7 +16,7 @@ const ProductList = ({ searchString }: Props) => {
 
     const [isInitialized, setIsInitialized] = useState(false)
 
-    // Initialize users at first load
+    // Load Products
     useEffect(() => {
         if(isInitialized
             || ProductState.products.length)

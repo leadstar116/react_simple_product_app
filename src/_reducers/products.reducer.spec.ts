@@ -1,132 +1,49 @@
-import { UserInfo } from "../_constants/product.interface"
-import usersReducer from './products.reducer'
-import * as usersActions from '../_actions/products.actions'
+import { IProduct } from "../_constants/product.interface"
+import productsReducer from './products.reducer'
+import * as productsActions from '../_actions/products.actions'
 
-describe('users reducer test', () => {
+describe('products reducer test', () => {
     let initialState = {
-        users: [] as UserInfo[],
-        preloadedUsers: [] as UserInfo[],
-        isPreloaded: false
+        products: [] as IProduct[],
     }
 
-    const testUserInfo = {
-        email: 'test@test.com',
-        name: {
-            first: "James",
-            last: "Bond",
-            username: "test"
-        },
-        picture: {
-            large: "https://randomuser.me/api/portraits/men/75.jpg",
-            medium: "https://randomuser.me/api/portraits/med/men/75.jpg",
-            thumbnail: "https://randomuser.me/api/portraits/thumb/men/75.jpg"
-        } ,
-        cell: "+14325432870",
-        dob: {
-            date: "1993-07-20T09:44:18.674Z",
-            age: 26
-        },
-        gender: "male",
-        location: {
-            street: {
-                name: "9278 new road",
-                number: 12
-            },
-            city: "kilcoole",
-            state: "waterford",
-            postcode: 93027,
-            country: "CH",
-            coordinates: {
-              latitude: "20.9267",
-              longitude: "-7.9310"
-            },
-            timezone: {
-              offset: "-3:30",
-              description: "Newfoundland"
-            }
-        },
-        nat: "CH",
-        phone: "+14325432870",
-        id: {
-            name: "testuser111",
-            value: "12"
-        },
-        login: {
-            username: "test"
-        }
-    } as UserInfo
+    const testProductInfo = {
+        "id": "78e7d58f-b6ec-4701-b7fd-86968c53df89",
+        "name": "Product - NYHET 🔄 PopSockets - Chroma Splash gloss POPGRIP",
+        "priceUSD": 14.19,
+        "photos": [
+            "https://cdn.shopify.com/s/files/1/1097/9190/products/Chroma-Splash-Gloss_01_Top-View_RGB-600x600-1dd2e0d.png?v=1580077484",
+            "https://cdn.shopify.com/s/files/1/1097/9190/products/Chroma-Splash-Gloss_02_Grip-Expanded_RGB-565x601-313519e.png?v=1580077490"
+        ],
+        "price": 11.95
+    } as IProduct
 
-    test('USER_LOADED_SUCCESSFULLY: should set loaded users to preloaded users and isPreloaded to true', () => {
-        const users = [ testUserInfo ]
+    test('PRODUCTS_LOADED_SUCCESSFULLY: should set loaded products to the products', () => {
+        const products = [ testProductInfo ]
         const expectedState = {
-            users: [],
-            preloadedUsers: users,
-            isPreloaded: true
+            products: products,
         }
         const action = {
-            type: usersActions.USER_LOADED_SUCCESSFULLY,
-            payload: { users }
+            type: productsActions.PRODUCTS_LOADED_SUCCESSFULLY,
+            payload: { products }
         }
-        const newState = usersReducer(initialState, action)
+        const newState = productsReducer(initialState, action)
         expect(newState).toEqual(expectedState)
     })
 
-    test('UPDATE_USERS_WITH_PRELOADED_USERS: should add preloaded users to users, set isPreloaded to false and preloadedUsers to empty array',
-        () => {
-            const users = [ testUserInfo ]
-            initialState = {
-                users: [],
-                preloadedUsers: [ testUserInfo ],
-                isPreloaded: true
-            }
-            const expectedState = {
-                users,
-                preloadedUsers: [],
-                isPreloaded: false
-            }
-            const action = {
-                type: usersActions.UPDATE_USERS_WITH_PRELOADED_USERS,
-                payload: {}
-            }
-            const newState = usersReducer(initialState, action)
-            expect(newState).toEqual(expectedState)
-        })
-
-    test('UPDATE_PRELOADED_FLAG: should set isPreloaded to true', () => {
+    test('CLEAR_PRODUCTS: should set products to empty', () => {
+        const products = [ testProductInfo ]
         initialState = {
-            users: [],
-            preloadedUsers: [],
-            isPreloaded: true
+            products: products,
         }
         const expectedState = {
-            users: [],
-            preloadedUsers: [],
-            isPreloaded: true
+            products: [],
         }
         const action = {
-            type: usersActions.UPDATE_PRELOADED_FLAG,
-            payload: true
-        }
-        const newState = usersReducer(initialState, action)
-        expect(newState).toEqual(expectedState)
-    })
-
-    test('CLEAR_USERS: should set users to empty', () => {
-        initialState = {
-            users: [ testUserInfo ],
-            preloadedUsers: [],
-            isPreloaded: false
-        }
-        const expectedState = {
-            users: [],
-            preloadedUsers: [],
-            isPreloaded: false
-        }
-        const action = {
-            type: usersActions.CLEAR_USERS,
+            type: productsActions.CLEAR_PRODUCTS,
             payload: {}
         }
-        const newState = usersReducer(initialState, action)
+        const newState = productsReducer(initialState, action)
         expect(newState).toEqual(expectedState)
     })
 })

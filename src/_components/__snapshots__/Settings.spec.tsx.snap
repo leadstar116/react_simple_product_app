@@ -18,44 +18,18 @@ exports[`Settings Component should render with given state from Redux store 1`] 
       <div
         className="col-sm-3 col-12"
       >
-        Nationality: 
+        Currencies: 
       </div>
       <div
         className="col-sm-9 col-12"
       >
         <select
-          className="nationality-select"
-          id="nationality"
-          name="nationality"
+          className="currency-select"
+          id="currency"
+          name="currency"
           onChange={[Function]}
-          value=""
-        >
-          <option
-            value="Any"
-          >
-            Any
-          </option>
-          <option
-            value="CH"
-          >
-            CH
-          </option>
-          <option
-            value="ES"
-          >
-            ES
-          </option>
-          <option
-            value="FR"
-          >
-            FR
-          </option>
-          <option
-            value="GB"
-          >
-            GB
-          </option>
-        </select>
+          value="USD"
+        />
       </div>
     </div>
   </div>

@@ -9,7 +9,7 @@ const Settings = () => {
     const settings = useSelector((state: initialState) => state.settingsReducer)
     const [isInitialized, setIsInitialized] = useState(false)
 
-    // Initialize users at first load
+    // Load Currencies
     useEffect(() => {
         if(isInitialized
             || settings.currencies.length)

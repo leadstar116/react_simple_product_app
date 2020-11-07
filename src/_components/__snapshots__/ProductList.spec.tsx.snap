@@ -9,42 +9,28 @@ exports[`ProductList Component should render with given props 1`] = `
     onClick={[Function]}
   >
     <div
-      className="col-sm-2 col-12"
-    >
-      <img
-        alt=""
-        src="https://randomuser.me/api/portraits/thumb/men/75.jpg"
-      />
-    </div>
-    <div
-      className="col-sm-2 col-12"
+      className="col-sm-4 col-12"
     >
       <span>
-        test
-      </span>
-    </div>
-    <div
-      className="col-sm-2 col-12"
-    >
-      <span>
-        CH
-      </span>
-    </div>
-    <div
-      className="col-sm-2 col-12"
-    >
-      <span>
-        James Bond
+        Product - NYHET 🔄 PopSockets - Chroma Splash gloss POPGRIP
       </span>
     </div>
     <div
       className="col-sm-4 col-12"
     >
       <span>
-        test@test.com
+        $ 11.95
       </span>
     </div>
+    <div
+      className="col-sm-4 col-12"
+    >
+      <img
+        className="img-thumbnail small-image"
+        src="https://cdn.shopify.com/s/files/1/1097/9190/products/Chroma-Splash-Gloss_01_Top-View_RGB-600x600-1dd2e0d.png?v=1580077484"
+      />
+    </div>
   </div>
-
+  
 </div>
 `;

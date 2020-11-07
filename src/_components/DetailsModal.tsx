@@ -1,8 +1,8 @@
 import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
-import { useSelector } from 'react-redux';
-import { IProduct } from '../_constants/product.interface';
-import { initialState } from '../_constants/state.interface';
+import { useSelector } from 'react-redux'
+import { IProduct } from '../_constants/product.interface'
+import { initialState } from '../_constants/state.interface'
 
 type Props = {
     show: boolean,
@@ -85,7 +85,7 @@ const DetailsModal = (props: Props) => {
                 <Button onClick={props.onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
-    );
+    )
 }
 
 export default DetailsModal

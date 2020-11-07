@@ -1,86 +1,74 @@
-import configureStore from 'redux-mock-store';
-import React from 'react';
-import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
-import { LocationEnum, LocationSettings } from '../_constants/settings.interface';
+import configureStore from 'redux-mock-store'
+import React from 'react'
+import { Provider } from 'react-redux'
+import renderer from 'react-test-renderer'
 import ProductList from './ProductList'
-import { UserInfo } from '../_constants/product.interface';
+import { IProduct } from '../_constants/product.interface'
+import { Currency } from '../_constants/settings.interface'
 
 
 describe('ProductList Component', () => {
-    const testUserInfo = {
-        email: 'test@test.com',
-        name: {
-            first: "James",
-            last: "Bond",
-            username: "test"
-        },
-        picture: {
-            large: "https://randomuser.me/api/portraits/men/75.jpg",
-            medium: "https://randomuser.me/api/portraits/med/men/75.jpg",
-            thumbnail: "https://randomuser.me/api/portraits/thumb/men/75.jpg"
-        } ,
-        cell: "+14325432870",
-        dob: {
-            date: "1993-07-20T09:44:18.674Z",
-            age: 26
-        },
-        gender: "male",
-        location: {
-            street: {
-                name: "9278 new road",
-                number: 12
-            },
-            city: "kilcoole",
-            state: "waterford",
-            postcode: 93027,
-            country: "CH",
-            coordinates: {
-              latitude: "20.9267",
-              longitude: "-7.9310"
-            },
-            timezone: {
-              offset: "-3:30",
-              description: "Newfoundland"
-            }
-        },
-        nat: "CH",
-        phone: "+14325432870",
-        id: {
-            name: "testuser111",
-            value: "12"
-        },
-        login: {
-            username: "test"
-        }
-    } as UserInfo
+    const testProductInfo = {
+        "id": "78e7d58f-b6ec-4701-b7fd-86968c53df89",
+        "name": "Product - NYHET 🔄 PopSockets - Chroma Splash gloss POPGRIP",
+        "priceUSD": 14.19,
+        "photos": [
+            "https://cdn.shopify.com/s/files/1/1097/9190/products/Chroma-Splash-Gloss_01_Top-View_RGB-600x600-1dd2e0d.png?v=1580077484",
+            "https://cdn.shopify.com/s/files/1/1097/9190/products/Chroma-Splash-Gloss_02_Grip-Expanded_RGB-565x601-313519e.png?v=1580077490"
+        ],
+        "price": 11.95
+    } as IProduct
 
     const settingsState = {
-        location: {
-            nationality: LocationEnum.Any
-        } as LocationSettings
+        currentCurrency: {
+            name: 'US Dollar',
+            symbol: '$',
+            symbolNative: '$',
+            decimalDigits: 2,
+            rounding: 0,
+            code: 'USD',
+            namePlural: 'US dollars',
+            countries: [
+                'AS',
+                'BQ',
+                'EC',
+                'FM',
+                'GU',
+                'IO',
+                'MH',
+                'MP',
+                'PR',
+                'PW',
+                'SV',
+                'TC',
+                'TL',
+                'UM',
+                'US',
+                'VG',
+                'VI',
+            ],
+        } as Currency,
+        currencies: [] as Currency[]
+    }
+    const productsState = {
+        products: [testProductInfo],
     }
 
-    const usersState = {
-        users: [testUserInfo],
-        isPreloaded: true
-    }
-
-    const mockStore = configureStore();
+    const mockStore = configureStore()
     let store = mockStore({
         settingsReducer: settingsState,
-        usersReducer: usersState,
+        productsReducer: productsState,
     })
 
-    store.dispatch = jest.fn();
+    store.dispatch = jest.fn()
 
     let component = renderer.create(
         <Provider store={store}>
             <ProductList searchString=""/>
         </Provider>
-    );
+    )
 
     it('should render with given props', () => {
-        expect(component.toJSON()).toMatchSnapshot();
-    });
+        expect(component.toJSON()).toMatchSnapshot()
+    })
 })

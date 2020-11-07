@@ -8,7 +8,7 @@ exports[`Header Component should render with given props 1`] = `
     className="navbar-brand"
     href="#home"
   >
-    Address Book
+    Simple Product App
   </a>
   <button
     aria-controls="basic-navbar-nav"
