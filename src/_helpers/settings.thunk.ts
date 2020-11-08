@@ -51,7 +51,7 @@ export const updateCurrentCurrency = (currency = defaultCurrency) => async (disp
 
 export const loadCurrencies = () => async (dispatch: MyThunkDispatch) => {
     try {
-        let response = await fetch(`http://localhost:3001/currencies`)
+        let response = await fetch(`https://dry-forest-53601.herokuapp.com/currencies`)
         const result = await response.json()
 
         dispatch(currenciesLoadedSuccessfully(result))

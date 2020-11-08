@@ -11,7 +11,7 @@ type MyThunkDispatch = ThunkDispatch<MyRootState, MyExtraArg, Action>;
 export const loadProducts = (currency: Currency) => async (dispatch: MyThunkDispatch) => {
     try {
         dispatch(alertLoading('Loading...'))
-        let response = await fetch(`http://localhost:3001/products?currency=${currency.code}`)
+        let response = await fetch(`https://dry-forest-53601.herokuapp.com/products?currency=${currency.code}`)
         const result = await response.json()
 
         dispatch(productLoadedSuccessfully(result))
