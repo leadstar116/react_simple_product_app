@@ -14,6 +14,7 @@ This is just a simple product app, where customers can see all products with the
 ### Screenshot:
 <img src="https://content.screencast.com/users/SupremeDev/folders/Default/media/cdef70bb-cb07-43f4-837f-db1f861891e8/screenshot.png" />
 <img src="https://content.screencast.com/users/SupremeDev/folders/Default/media/ed2b4888-42f5-4797-bab6-2563e61fed38/screenshot.png" />
+<img src="https://content.screencast.com/users/SupremeDev/folders/Default/media/0f55bf29-6b21-457c-be5f-6fa5e947ce8f/screenshot.png" />
 
 ## Used Stacks:
 - React
